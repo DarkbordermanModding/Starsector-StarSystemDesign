@@ -1,0 +1,46 @@
+id,trigger,conditions,script,text,options,notes
+# Main entry
+StarSystemDesignOption,OpenInteractionDialog,"$option == StarSystemDesignOption","StarSystemDesignEntryScript",,,
+StarSystemDesignLeaveOption,DialogOptionSelected,"$option == StarSystemDesignLeaveOption","DismissDialog",,,
+
+# Stable location entry,,,,,,
+StarSystemDesignStableLocationOption,DialogOptionSelected,"$option == StarSystemDesignStableLocationOption","StarSystemDesignStableLocationScript",,,
+StarSystemDesignStableLocationCreateOption,DialogOptionSelected,"$option == StarSystemDesignStableLocationCreateOption","StarSystemDesignStableLocationScript create",,,
+StarSystemDesignStableLocationMoveOption,DialogOptionSelected,"$option == StarSystemDesignStableLocationMoveOption","StarSystemDesignStableLocationScript move",,,
+StarSystemDesignStableLocationBackOption,DialogOptionSelected,"$option == StarSystemDesignStableLocationBackOption","StarSystemDesignEntryScript",,,
+
+# Star gate entry,,,,,,
+StarSystemDesignStarGateOption,DialogOptionSelected,"$option == StarSystemDesignStarGateOption","StarSystemDesignStarGateScript",,,
+StarSystemDesignStarGateBuildOption,DialogOptionSelected,"$option == StarSystemDesignStarGateBuildOption","StarSystemDesignStarGateScript build",,,
+StarSystemDesignStarGateMoveOption,DialogOptionSelected,"$option == StarSystemDesignStarGateMoveOption","StarSystemDesignStarGateScript move",,,
+StarSystemDesignStarGateBackOption,DialogOptionSelected,"$option == StarSystemDesignStarGateBackOption","StarSystemDesignEntryScript",,,
+
+# Colony entry,,,,,,
+StarSystemDesignColonyOption,DialogOptionSelected,"$option == StarSystemDesignColonyOption","StarSystemDesignColonyScript",,,
+StarSystemDesignColonyCreateOption,DialogOptionSelected,"$option == StarSystemDesignColonyCreateOption","StarSystemDesignColonyScript create",,,
+StarSystemDesignColonyBackOption,DialogOptionSelected,"$option == StarSystemDesignColonyBackOption","StarSystemDesignEntryScript",,,
+
+# Debris entry,,,,,,
+StarSystemDesignDebrisOption,DialogOptionSelected,"$option == StarSystemDesignDebrisOption","StarSystemDesignDebrisScript",,,
+
+# Jump point(in system) entry,,,,,,
+StarSystemDesignJumpPointOption,DialogOptionSelected,"$option == StarSystemDesignJumpPointOption","StarSystemDesignJumpPointScript",,,
+StarSystemDesignJumpPointCreateOption,DialogOptionSelected,"$option == StarSystemDesignJumpPointCreateOption","StarSystemDesignJumpPointScript create",,,
+StarSystemDesignJumpPointMoveOption,DialogOptionSelected,"$option == StarSystemDesignJumpPointMoveOption","StarSystemDesignJumpPointScript move",,,
+StarSystemDesignJumpPointRemoveOption,DialogOptionSelected,"$option == StarSystemDesignJumpPointRemoveOption","StarSystemDesignJumpPointScript remove",,,
+StarSystemDesignJumpPointBackOption,DialogOptionSelected,"$option == StarSystemDesignJumpPointBackOption","StarSystemDesignEntryScript",,,
+
+# Jump point(hyperspace) entry,,,,,,
+StarSystemDesignHyperspaceJumpPointOption,DialogOptionSelected,"$option == StarSystemDesignHyperspaceJumpPointOption","StarSystemDesignHyperspaceJumpPointScript",,,
+StarSystemDesignHyperspaceJumpPointBackOption,DialogOptionSelected,"$option == StarSystemDesignHyperspaceJumpPointBackOption","StarSystemDesignEntryScript",,,
+StarSystemDesignHyperspaceJumpPointRemoveOption,DialogOptionSelected,"$option == StarSystemDesignHyperspaceJumpPointRemoveOption","StarSystemDesignHyperspaceJumpPointScript remove",,,
+
+# Nascent Gravity Well entry,,,,,,
+StarSystemDesignNascentGravityWellOption,DialogOptionSelected,"$option == StarSystemDesignNascentGravityWellOption","StarSystemDesignNascentGravityWellScript",,,
+StarSystemDesignNascentGravityWellBackOption,DialogOptionSelected,"$option == StarSystemDesignNascentGravityWellBackOption","StarSystemDesignEntryScript",,,
+StarSystemDesignNascentGravityWellRemoveOption,DialogOptionSelected,"$option == StarSystemDesignNascentGravityWellRemoveOption","StarSystemDesignNascentGravityWellScript remove",,,
+
+# Warning beacon entry,,,,,,
+StarSystemDesignWarningBeaconOption,DialogOptionSelected,"$option == StarSystemDesignWarningBeaconOption","StarSystemDesignWarningBeaconScript",,,
+StarSystemDesignWarningBeaconBackOption,DialogOptionSelected,"$option == StarSystemDesignWarningBeaconBackOption","StarSystemDesignEntryScript",,,
+StarSystemDesignWarningBeaconRemoveOption,DialogOptionSelected,"$option == StarSystemDesignWarningBeaconRemoveOption","StarSystemDesignWarningBeaconScript remove",,,

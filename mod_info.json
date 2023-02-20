@@ -1,0 +1,9 @@
+{
+	"id":"darkborderman.starsystemdesign",
+	"name":"Star system design",
+	"author":"Darkborderman",
+	"version":"0.0.0",
+	"description":"Manage star system layout in Starsector.",
+	"gameVersion":"0.97a-RC11",
+	"jars": ["jars/starsystemdesign.jar"]
+}
