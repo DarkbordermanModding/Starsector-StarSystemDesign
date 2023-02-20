@@ -1,0 +1,9 @@
+{
+	"id":"darkborderman.startsystemdesign",
+	"name":"Star system design",
+	"author":"Darkborderman",
+	"version":"0.0.0",
+	"description":"Design entities alignment of star systems.",
+	"gameVersion":"0.96a-RC10",
+	"jars": ["jars/starsystemdesign.jar"]
+}

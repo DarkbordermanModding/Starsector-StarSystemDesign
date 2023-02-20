@@ -1,0 +1,14 @@
+{
+    "stablelocationcount": 3,
+    "ruleCommandPackages": [
+        "mod.starsystemdesign.rulecmd",
+        "mod.starsystemdesign.rulecmd.colony",
+        "mod.starsystemdesign.rulecmd.debris",
+        "mod.starsystemdesign.rulecmd.hyperspacejumppoint",
+        "mod.starsystemdesign.rulecmd.jumppoint",
+        "mod.starsystemdesign.rulecmd.nascentgravitywell",
+        "mod.starsystemdesign.rulecmd.stablelocation",
+        "mod.starsystemdesign.rulecmd.stargate",
+        "mod.starsystemdesign.rulecmd.warningbeacon"
+    ]
+}
