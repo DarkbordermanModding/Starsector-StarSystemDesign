@@ -1,5 +1,5 @@
 github:
-  description: Design entities alignment of star systems.
+  description: Manage, design star systems' layouts in Starsector.
   enable_discussions: false
   enable_issues: false
   enable_projects: false
