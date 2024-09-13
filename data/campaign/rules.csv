@@ -25,6 +25,10 @@ StarSystemDesignDebrisOption,DialogOptionSelected,"$option == StarSystemDesignDe
 StarSystemDesignDebrisRemoveOption,DialogOptionSelected,"$option == StarSystemDesignDebrisRemoveOption","StarSystemDesignDebrisScript remove",,,
 StarSystemDesignDebrisBackOption,DialogOptionSelected,"$option == StarSystemDesignDebrisBackOption","StarSystemDesignEntryScript",,,
 
+# Entity entry,,,,,,
+StarSystemDesignEntityOption,DialogOptionSelected,"$option == StarSystemDesignEntityOption","StarSystemDesignDebrisScript",,,
+StarSystemDesignEntityRemoveOption,DialogOptionSelected,"$option == StarSystemDesignEntityRemoveOption","StarSystemDesignDebrisScript remove",,,
+
 # Jump point(in system) entry,,,,,,
 StarSystemDesignJumpPointOption,DialogOptionSelected,"$option == StarSystemDesignJumpPointOption","StarSystemDesignJumpPointScript",,,
 StarSystemDesignJumpPointCreateOption,DialogOptionSelected,"$option == StarSystemDesignJumpPointCreateOption","StarSystemDesignJumpPointScript create",,,

@@ -4,6 +4,7 @@
         "mod.starsystemdesign.rulecmd",
         "mod.starsystemdesign.rulecmd.colony",
         "mod.starsystemdesign.rulecmd.debris",
+        "mod.starsystemdesign.rulecmd.entity",
         "mod.starsystemdesign.rulecmd.hyperspacejumppoint",
         "mod.starsystemdesign.rulecmd.jumppoint",
         "mod.starsystemdesign.rulecmd.nascentgravitywell",

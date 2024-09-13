@@ -40,6 +40,8 @@ public class StarSystemDesignDebrisScript extends BaseCommandPlugin{
             if(target.getClass() == CampaignTerrain.class){
                 // terrain
                 CampaignTerrain terrain = (CampaignTerrain) target;
+                dialog.getTextPanel().addParagraph(terrain.getPlugin().getClass().toString());
+
                 if(terrain.getPlugin().getClass() == DebrisFieldTerrainPlugin.class){
                     DebrisFieldTerrainPlugin debris = (DebrisFieldTerrainPlugin)terrain.getPlugin();
                     if(debris.isScavenged()) opts.setEnabled("StarSystemDesignDebrisRemoveOption", true);
