@@ -13,6 +13,7 @@ import com.fs.starfarer.api.campaign.SectorEntityToken;
 import com.fs.starfarer.api.campaign.rules.MemoryAPI;
 import com.fs.starfarer.api.impl.campaign.rulecmd.BaseCommandPlugin;
 import com.fs.starfarer.api.impl.campaign.terrain.DebrisFieldTerrainPlugin;
+import com.fs.starfarer.api.impl.campaign.terrain.MagneticFieldTerrainPlugin;
 import com.fs.starfarer.api.impl.campaign.terrain.NebulaTerrainPlugin;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.campaign.CampaignTerrain;
@@ -41,9 +42,14 @@ public class StarSystemDesignDebrisScript extends BaseCommandPlugin{
             if(terrain.getPlugin().getClass() == DebrisFieldTerrainPlugin.class){
                 DebrisFieldTerrainPlugin debris = (DebrisFieldTerrainPlugin)terrain.getPlugin();
                 if(debris.isScavenged()) opts.setEnabled("StarSystemDesignDebrisRemoveOption", true);
-            } else if(terrain.getPlugin().getClass() == NebulaTerrainPlugin.class){
+            } else if(
+                    terrain.getPlugin().getClass() == NebulaTerrainPlugin.class ||
+                    terrain.getPlugin().getClass() == MagneticFieldTerrainPlugin.class ||
+                    terrain.getPlugin().getClass().getName().equals("org.magiclib.terrain.MagicAsteroidFieldTerrainPlugin")
+                ){
                 opts.setEnabled("StarSystemDesignDebrisRemoveOption", true);
             } // AsteroidBelt and other ring will not removed because of its sprite will still exist
+
             opts.addOption("Back", "StarSystemDesignDebrisBackOption");
             opts.setShortcut("StarSystemDesignDebrisBackOption", Keyboard.KEY_ESCAPE, false, false, false, false);
         }else{
@@ -53,12 +59,11 @@ public class StarSystemDesignDebrisScript extends BaseCommandPlugin{
                     if(terrain.getPlugin().getClass() == DebrisFieldTerrainPlugin.class){
                         DebrisFieldTerrainPlugin debris = (DebrisFieldTerrainPlugin)terrain.getPlugin();
                         debris.getParams().lastsDays = 1f;
-                        dialog.dismiss();
                     }
                     else {
                         Global.getSector().getPlayerFleet().getStarSystem().removeEntity(target);
-                        dialog.dismiss();
                     }
+                    dialog.dismiss();
                 }
             }
         }
