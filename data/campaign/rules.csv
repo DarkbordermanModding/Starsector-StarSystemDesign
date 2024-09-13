@@ -22,7 +22,8 @@ StarSystemDesignColonyBackOption,DialogOptionSelected,"$option == StarSystemDesi
 
 # Debris entry,,,,,,
 StarSystemDesignDebrisOption,DialogOptionSelected,"$option == StarSystemDesignDebrisOption","StarSystemDesignDebrisScript",,,
-StarSystemDesignDebrisRemoveOption,DialogOptionSelected,"$option == StarSystemDesignDebrisRemoveOption","StarSystemDesignDebrisScript",,,
+StarSystemDesignDebrisRemoveOption,DialogOptionSelected,"$option == StarSystemDesignDebrisRemoveOption","StarSystemDesignDebrisScript remove",,,
+StarSystemDesignDebrisBackOption,DialogOptionSelected,"$option == StarSystemDesignDebrisBackOption","StarSystemDesignEntryScript",,,
 
 # Jump point(in system) entry,,,,,,
 StarSystemDesignJumpPointOption,DialogOptionSelected,"$option == StarSystemDesignJumpPointOption","StarSystemDesignJumpPointScript",,,
