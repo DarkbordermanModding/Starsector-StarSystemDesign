@@ -11,7 +11,9 @@ import com.fs.starfarer.api.campaign.OptionPanelAPI;
 import com.fs.starfarer.api.campaign.SectorEntityToken;
 import com.fs.starfarer.api.campaign.rules.MemoryAPI;
 import com.fs.starfarer.api.impl.campaign.rulecmd.BaseCommandPlugin;
+import com.fs.starfarer.api.impl.campaign.terrain.AsteroidBeltTerrainPlugin;
 import com.fs.starfarer.api.impl.campaign.terrain.DebrisFieldTerrainPlugin;
+import com.fs.starfarer.api.impl.campaign.terrain.NebulaTerrainPlugin;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.campaign.CampaignTerrain;
 
@@ -23,6 +25,7 @@ public class StarSystemDesignDebrisScript extends BaseCommandPlugin{
         opts.clearOptions();
 
         String arg = null;
+        SectorEntityToken target = dialog.getInteractionTarget().getOrbitFocus();
         try{
             arg = params.get(0).getString(memoryMap);
         }catch(IndexOutOfBoundsException e){}
@@ -30,13 +33,25 @@ public class StarSystemDesignDebrisScript extends BaseCommandPlugin{
         if(arg == null){
             opts.addOption("Remove object", "StarSystemDesignDebrisRemoveOption");
             opts.setEnabled("StarSystemDesignDebrisRemoveOption", false);
-            // check here
+
+            if(target.getClass() == CampaignTerrain.class){
+                // terrain
+                CampaignTerrain terrain = (CampaignTerrain) target;
+                if(terrain.getPlugin().getClass() == DebrisFieldTerrainPlugin.class){
+                    DebrisFieldTerrainPlugin debris = (DebrisFieldTerrainPlugin)terrain.getPlugin();
+                    if(debris.isScavenged()) opts.setEnabled("StarSystemDesignDebrisRemoveOption", true);
+                } else if(terrain.getPlugin().getClass() == NebulaTerrainPlugin.class){
+                    // AsteroidBelt will not removed because of its sprite will still exist
+                    opts.setEnabled("StarSystemDesignDebrisRemoveOption", true);
+                }
+            }else{
+                opts.setEnabled("StarSystemDesignDebrisRemoveOption", true);
+            }
             opts.addOption("Back", "StarSystemDesignDebrisBackOption");
             opts.setShortcut("StarSystemDesignDebrisBackOption", Keyboard.KEY_ESCAPE, false, false, false, false);
         }else{
             switch(arg){
                 case "remove":{
-                    SectorEntityToken target = dialog.getInteractionTarget().getOrbitFocus();
                     if(target.getClass() == CampaignTerrain.class){
                         // terrain
                         CampaignTerrain terrain = (CampaignTerrain) target;
