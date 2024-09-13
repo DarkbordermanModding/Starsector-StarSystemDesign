@@ -9,9 +9,7 @@ import com.fs.starfarer.api.campaign.SectorEntityToken;
 import com.fs.starfarer.api.campaign.rules.MemoryAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Tags;
 import com.fs.starfarer.api.impl.campaign.rulecmd.BaseCommandPlugin;
-import com.fs.starfarer.api.impl.campaign.terrain.DebrisFieldTerrainPlugin;
 import com.fs.starfarer.api.util.Misc;
-import com.fs.starfarer.campaign.CampaignTerrain;
 import com.fs.starfarer.campaign.NascentGravityWell;
 
 import org.lwjgl.input.Keyboard;
@@ -38,17 +36,11 @@ public class StarSystemDesignEntryScript extends BaseCommandPlugin{
             dialog.getOptionPanel().addOption("Manage system colony", "StarSystemDesignColonyOption");
             opts.setEnabled("StarSystemDesignColonyOption", true);
 
-            dialog.getOptionPanel().addOption("Cleanup current orbiting debris", "StarSystemDesignDebrisOption");
+            dialog.getOptionPanel().addOption("Select current orbiting object", "StarSystemDesignDebrisOption");
             opts.setEnabled("StarSystemDesignDebrisOption", false);
-
             SectorEntityToken orbit = dialog.getInteractionTarget().getOrbitFocus();
-            if(orbit != null && orbit.getClass() == CampaignTerrain.class){
-                CampaignTerrain terrain = (CampaignTerrain)orbit;
-                if(terrain.getPlugin().getClass() == DebrisFieldTerrainPlugin.class){
-                    DebrisFieldTerrainPlugin debris = (DebrisFieldTerrainPlugin)terrain.getPlugin();
-                    if(debris.isScavenged()) opts.setEnabled("StarSystemDesignDebrisOption", true);
-               }
-            }
+            if(orbit != null) opts.setEnabled("StarSystemDesignDebrisOption", true);
+
         }else{
             dialog.getOptionPanel().addOption("Manage nearby jump point", "StarSystemDesignHyperspaceJumpPointOption");
             SectorEntityToken jumpPoint = Utilities.getClosetEntity(dialog.getInteractionTarget(), 100, Tags.JUMP_POINT);
