@@ -3,21 +3,24 @@ package mod.starsystemdesign.rulecmd.debris;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.InteractionDialogAPI;
 import com.fs.starfarer.api.campaign.OptionPanelAPI;
 import com.fs.starfarer.api.campaign.SectorEntityToken;
+import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.rules.MemoryAPI;
 import com.fs.starfarer.api.impl.campaign.rulecmd.BaseCommandPlugin;
-import com.fs.starfarer.api.impl.campaign.terrain.AsteroidBeltTerrainPlugin;
 import com.fs.starfarer.api.impl.campaign.terrain.DebrisFieldTerrainPlugin;
 import com.fs.starfarer.api.impl.campaign.terrain.NebulaTerrainPlugin;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.campaign.CampaignTerrain;
 
 public class StarSystemDesignDebrisScript extends BaseCommandPlugin{
+
+    public static Logger log = Global.getLogger(StarSystemDesignDebrisScript.class);
 
     @Override
     public boolean execute(String ruleId, InteractionDialogAPI dialog, List<Misc.Token> params, Map<String, MemoryAPI> memoryMap) {
@@ -45,6 +48,13 @@ public class StarSystemDesignDebrisScript extends BaseCommandPlugin{
                     opts.setEnabled("StarSystemDesignDebrisRemoveOption", true);
                 }
             }else{
+                if(target.getMarket() != null){
+                    MarketAPI market = target.getMarket();
+                    log.info(market.getFactionId());
+                    log.info(market.getSurveyLevel());
+                    log.info(market.getName());
+                }
+
                 opts.setEnabled("StarSystemDesignDebrisRemoveOption", true);
             }
             opts.addOption("Back", "StarSystemDesignDebrisBackOption");
