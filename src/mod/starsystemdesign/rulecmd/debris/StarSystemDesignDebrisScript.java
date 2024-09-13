@@ -10,7 +10,6 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.InteractionDialogAPI;
 import com.fs.starfarer.api.campaign.OptionPanelAPI;
 import com.fs.starfarer.api.campaign.SectorEntityToken;
-import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.rules.MemoryAPI;
 import com.fs.starfarer.api.impl.campaign.rulecmd.BaseCommandPlugin;
 import com.fs.starfarer.api.impl.campaign.terrain.DebrisFieldTerrainPlugin;
@@ -19,7 +18,6 @@ import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.campaign.CampaignTerrain;
 
 public class StarSystemDesignDebrisScript extends BaseCommandPlugin{
-
     public static Logger log = Global.getLogger(StarSystemDesignDebrisScript.class);
 
     @Override
@@ -37,47 +35,27 @@ public class StarSystemDesignDebrisScript extends BaseCommandPlugin{
             opts.addOption("Remove object", "StarSystemDesignDebrisRemoveOption");
             opts.setEnabled("StarSystemDesignDebrisRemoveOption", false);
 
-            if(target.getClass() == CampaignTerrain.class){
-                // terrain
-                CampaignTerrain terrain = (CampaignTerrain) target;
-                dialog.getTextPanel().addParagraph(terrain.getPlugin().getClass().toString());
+            CampaignTerrain terrain = (CampaignTerrain) target;
+            dialog.getTextPanel().addParagraph(terrain.getPlugin().getClass().toString());
 
-                if(terrain.getPlugin().getClass() == DebrisFieldTerrainPlugin.class){
-                    DebrisFieldTerrainPlugin debris = (DebrisFieldTerrainPlugin)terrain.getPlugin();
-                    if(debris.isScavenged()) opts.setEnabled("StarSystemDesignDebrisRemoveOption", true);
-                } else if(terrain.getPlugin().getClass() == NebulaTerrainPlugin.class){
-                    // AsteroidBelt will not removed because of its sprite will still exist
-                    opts.setEnabled("StarSystemDesignDebrisRemoveOption", true);
-                }
-            }else{
-                if(target.getMarket() != null){
-                    MarketAPI market = target.getMarket();
-                    log.info(market.getFactionId());
-                    log.info(market.getSurveyLevel());
-                    log.info(market.getName());
-                }
-
+            if(terrain.getPlugin().getClass() == DebrisFieldTerrainPlugin.class){
+                DebrisFieldTerrainPlugin debris = (DebrisFieldTerrainPlugin)terrain.getPlugin();
+                if(debris.isScavenged()) opts.setEnabled("StarSystemDesignDebrisRemoveOption", true);
+            } else if(terrain.getPlugin().getClass() == NebulaTerrainPlugin.class){
                 opts.setEnabled("StarSystemDesignDebrisRemoveOption", true);
-            }
+            } // AsteroidBelt and other ring will not removed because of its sprite will still exist
             opts.addOption("Back", "StarSystemDesignDebrisBackOption");
             opts.setShortcut("StarSystemDesignDebrisBackOption", Keyboard.KEY_ESCAPE, false, false, false, false);
         }else{
             switch(arg){
                 case "remove":{
-                    if(target.getClass() == CampaignTerrain.class){
-                        // terrain
-                        CampaignTerrain terrain = (CampaignTerrain) target;
-                        if(terrain.getPlugin().getClass() == DebrisFieldTerrainPlugin.class){
-                            DebrisFieldTerrainPlugin debris = (DebrisFieldTerrainPlugin)terrain.getPlugin();
-                            debris.getParams().lastsDays = 1f;
-                            dialog.dismiss();
-                        }
-                        else {
-                            Global.getSector().getPlayerFleet().getStarSystem().removeEntity(target);
-                            dialog.dismiss();
-                        }
-                    } else {
-                        // Non-terrain, like planets
+                    CampaignTerrain terrain = (CampaignTerrain) target;
+                    if(terrain.getPlugin().getClass() == DebrisFieldTerrainPlugin.class){
+                        DebrisFieldTerrainPlugin debris = (DebrisFieldTerrainPlugin)terrain.getPlugin();
+                        debris.getParams().lastsDays = 1f;
+                        dialog.dismiss();
+                    }
+                    else {
                         Global.getSector().getPlayerFleet().getStarSystem().removeEntity(target);
                         dialog.dismiss();
                     }
