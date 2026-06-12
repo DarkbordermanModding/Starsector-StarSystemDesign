@@ -4,6 +4,6 @@
 	"author":"Darkborderman",
 	"version":"0.0.0",
 	"description":"Manage star system layout in Starsector.",
-	"gameVersion":"0.97a-RC11",
+	"gameVersion":"0.98a-RC8",
 	"jars": ["jars/starsystemdesign.jar"]
 }

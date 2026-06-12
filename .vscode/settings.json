@@ -1,4 +1,5 @@
 {
     "java.project.sourcePaths": ["src"],
-    "java.project.referencedLibraries": ["libs/*.jar"]
+    "java.project.referencedLibraries": ["libs/*.jar"],
+    "java.import.gradle.version": "9.5.1"
 }
