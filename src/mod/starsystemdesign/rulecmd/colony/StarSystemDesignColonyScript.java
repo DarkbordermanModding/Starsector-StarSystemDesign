@@ -94,6 +94,7 @@ public class StarSystemDesignColonyScript extends BaseCommandPlugin
 
         market.addCondition("population_3");
         market.addCondition("mild_climate");
+        market.addCondition("habitable");
 
         market.addIndustry("population");
         market.addIndustry("spaceport");
